@@ -1,28 +1,28 @@
+import { useState } from 'react'
 import FolderItem from "./FolderItem"
-import { UserMetadataType } from "../App"
 
-type UserMetadataProps = {
-  userMetadata: UserMetadataType
+export type FolderData = {
+  id: number
+  title: string
 }
 
-export type NoteType = {
-  content: string
-  createdAt: Date
-  updatedAt: Date
-}
-
-function FolderNavigation({ userMetadata }: UserMetadataProps) {
-  const { title } = userMetadata
+function FolderNavigation() {
+  const [folderList /*, setFolderList */] = useState<FolderData[]>([
+    // samples
+    { id: 0, title: "Folder Name" },
+    { id: 1, title: "Super Very Longer Folder Name" },
+    { id: 2, title: "Srtfn" }
+  ])
 
   return (
     <div className="folder-navigation-view">
-      <div className="top-navbar">
-        <h2 className="app-title">{title}</h2>
+      <div className="title-view top-navbar">
+        <h2 className="app-title">Notes</h2>
       </div>
       <div className="folder-view">
         <div className="collection-view notes-folder-view">
-          <div>
-            <FolderItem />
+          <div>{folderList.map(folder => 
+            <FolderItem key={folder.id} props={folder} />)}
           </div>
           <div className="scroll-indicator">
 

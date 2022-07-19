@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .App {
@@ -12,37 +14,133 @@
   height: 100vh;
 }
 
-.App .wrapper:nth-child(2) {
+.App .wrapper:nth-child(3) {
   width: 320px;
   height: 100vh;
 }
 
-.App .wrapper:nth-child(3) {
+.App .wrapper:nth-child(5) {
   width: auto;
   height: 100vh;
 }
 
-.svg-icon {
-  width: 32px;
-  height: 32px;
+.vertical-divider {
+  border-right: 1px solid lightgray;
 }
 
-.folder-navigation-view .top-navbar {
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+}
+
+.icon-yellow {
+  fill: #fccc77;
+  stroke: #fccc77;
+}
+
+.icon-gray {
+  fill: darkgray;
+  stroke: darkgray;
+}
+
+.top-navbar {
   display: flex;
   height: 48px;
   align-items: center;
   border-bottom: 1px solid lightgray;
+}
+
+.title-view {
   padding: 0 20px;
 }
 
-.folder-navigation-view .folder-item {
+.collection-view {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+}
+
+.collection-view > div:first-child {
+  flex: 1 100%;
+}
+
+.collection-view > .scroll-indicator {
+  float: right;
+  display: none;
+  flex: 2 7%;
+  height: 100vh;
+  background-color: black;
+}
+
+.list-item {
   border-bottom: 1px solid lightgray;
 }
 
-.folder-navigation-view .folder-item > * {
-  margin: 10px;
+.folder-item {
+  display: flex;
+  height: 48px;
+  align-items: center;
+}
+
+.note-item {
+  display: flex;
+  width: 320px;
+  height: 96px;
+  align-items: center;
+}
+
+.note-placeholder {
+  width: 20px;
+  min-width: 20px;
+  height: 100%;
+}
+
+.note-container {
+  display: block;
+  min-width: 0;
+}
+
+.note-content {
+  display: block;
+  min-width: 0;
+}
+
+.note-item-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.note-item-content {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+.notes-search-input {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  -ms-appearance: none !important;
+  -o-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  color: lightgray;
 }
 
 @media (max-width: 1200px) {

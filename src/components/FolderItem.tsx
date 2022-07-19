@@ -1,13 +1,19 @@
-function FolderItem() {
+import { ReactComponent as FolderIcon } from '../assets/folder_icon.svg'
+import { FolderData } from './FolderNavigation'
+
+type FolderProps = {
+  props: FolderData
+}
+
+function FolderItem({props}: FolderProps) {
+  const {title} = props
+
   return (
-    <div className="folder-item">
-      <svg className="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <g>
-          <path fill="none" d="M0 0h24v24H0z"/>
-          <path d="M12.414 5H21a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h7.414l2 2zM4 7v12h16V7H4z"/>
-        </g>
-      </svg>
-      <p className="folder-title">Folder Name</p>
+    <div className="folder-item list-item">
+      <div className="icon-container">
+        <FolderIcon className="icon-yellow" width={32} height={32} />
+      </div>
+      <p className="folder-title">{title}</p>
     </div>
   )
 }

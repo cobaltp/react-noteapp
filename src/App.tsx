@@ -1,29 +1,25 @@
-import { useState } from "react"
 import "./App.css"
 import FolderNavigation from "./components/FolderNavigation"
 import ListNavigation from "./components/ListNavigation"
+import NoteView from "./components/NoteView"
 
 export type UserMetadataType = {
   title: string
 }
 
 function App() {
-  const [userMetadata] = useState<UserMetadataType>(
-    {
-      title: "Notes"
-    }
-  )
-
   return (
     <div className="App">
       <div className="wrapper">
-        <FolderNavigation userMetadata={userMetadata} />
+        <FolderNavigation />
       </div>
+      <div className="vertical-divider" />
       <div className="wrapper">
         <ListNavigation />
       </div>
+      <div className="vertical-divider" />
       <div className="wrapper">
-        3
+        <NoteView />
       </div>
     </div>
   )
