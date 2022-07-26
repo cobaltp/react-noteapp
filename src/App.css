@@ -10,21 +10,24 @@
 }
 
 .App .wrapper:first-child {
-  width: 260px;
+  min-width: 260px;
   height: 100vh;
 }
 
 .App .wrapper:nth-child(3) {
-  width: 320px;
+  min-width: 320px;
   height: 100vh;
 }
 
 .App .wrapper:nth-child(5) {
-  width: auto;
+  flex: 1;
   height: 100vh;
+  overflow: auto;
 }
 
 .vertical-divider {
+  flex: 0 0 0;
+  box-sizing: border-box;
   border-right: 1px solid lightgray;
 }
 
@@ -52,6 +55,7 @@
   height: 48px;
   align-items: center;
   border-bottom: 1px solid lightgray;
+  box-sizing: border-box;
 }
 
 .title-view {
@@ -59,23 +63,16 @@
 }
 
 .collection-view {
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  height: calc(100vh - 48px);
 }
 
 .collection-view > div:first-child {
-  flex: 1 100%;
-}
-
-.collection-view > .scroll-indicator {
-  float: right;
-  display: none;
-  flex: 2 7%;
-  height: 100vh;
-  background-color: black;
+  overflow: hidden;
 }
 
 .list-item {
+  box-sizing: border-box;
   border-bottom: 1px solid lightgray;
 }
 
@@ -83,6 +80,10 @@
   display: flex;
   height: 48px;
   align-items: center;
+}
+
+.item-selected {
+  background-color: lightyellow;
 }
 
 .note-item {
@@ -98,14 +99,16 @@
   height: 100%;
 }
 
-.note-container {
+.notes-container {
   display: block;
   min-width: 0;
+  margin-inline-end: 20px;
 }
 
 .note-content {
   display: block;
   min-width: 0;
+  margin-inline-end: 20px;
 }
 
 .note-item-title {
@@ -122,7 +125,6 @@
   overflow: hidden;
 }
 
-
 .notes-search-input {
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
@@ -135,6 +137,40 @@
   font-weight: 600;
 }
 
+.note-view {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.note-view .note-toolbar {
+  flex: 0 0 48px;
+}
+
+.note-view .note-area {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.note-view .note-area textarea {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  border: none;
+  font-size: 1.2rem;
+  resize: none;
+}
+
+.note-area textarea:first-line {
+  font-weight: bold;
+}
+
+.note-area textarea:focus {
+  outline: none;
+}
+
 input:focus {
   outline: none;
 }
@@ -145,12 +181,22 @@ input::placeholder {
 
 @media (max-width: 1200px) {
   .App .wrapper:first-child {
-    color: black;
+    display: none;
+  }
+
+  .App .wrapper:nth-child(5) {
+    width: calc(100% - 320px);
+    height: 100vh;
   }
 }
 
 @media (max-width: 980px) {
-  .App .wrapper:nth-child(2) {
-    color: black;
+  .App .wrapper:nth-child(3) {
+    display: none;
+  }
+
+  .App .wrapper:nth-child(5) {
+    width: 100%;
+    height: 100vh;
   }
 }
